@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import "../components/SearchForm/SearchForm.scss";
+@import "../components/Preloader/Preloader.scss";
+@import "../components/BookCards/BookCards.scss";
+@import "../components/BookCard/BookCard.scss";
+@import "../components/BookInfo/BookInfo.scss";
+@import "../components/Button/Button.scss";
+@import "../components/ErrorBlock/ErrorBlock.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    padding: 80px 30px;
+    background: url("../assets/header-background.jpg") center/cover;
+}
