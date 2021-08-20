@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./styles/App.scss";
+import { SearchForm } from "./components/SearchForm/SearchForm";
+import { SearchParameters } from "./types";
+import { BookCards } from "./components/BookCards/BookCards";
+import { observer } from "mobx-react-lite";
+import { Switch, Route, useHistory } from "react-router-dom";
+import { BookInfo } from "./components/BookInfo/BookInfo";
+import { ErrorBlock } from "./components/ErrorBlock/ErrorBlock";
+import { useRootStore } from "./hooks/useRootStore";
 
 function App() {
+  const history = useHistory();
+  const { bookCardsStore, bookInfoStore } = useRootStore();
+
+  const searchBooks = (searchParams: SearchParameters) => {
+    history.push("/books");
+    bookCardsStore.loadBooksData(searchParams);
+  };
+
+  const onLoadMoreButtonClick = () => {
+    bookCardsStore.loadMore();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <SearchForm onSearch={searchBooks} />
+      <Switch>
+        <Route exact path="/books">
+          <BookCards
+            loading={bookCardsStore.loading}
+            error={bookCardsStore.error}
+            booksData={bookCardsStore.booksData}
+            totalCount={bookCardsStore.totalCount}
+            isLoadMoreAvailable={bookCardsStore.isLoadMoreAvailable}
+            onLoadMoreButtonClick={onLoadMoreButtonClick}
+            itemToScrollIndex={bookCardsStore.itemToScrollToIndex}
+          />
+        </Route>
+        <Route exact path="/books/:id">
+          <BookInfo loading={bookInfoStore.loading} error={bookInfoStore.error} bookInfo={bookInfoStore.bookInfo} />
+        </Route>
+        <Route exact path="/"></Route>
+        <Route path="*">
+          <ErrorBlock>Error 404: page not found</ErrorBlock>
+        </Route>
+      </Switch>
+    </>
   );
 }
 
-export default App;
+export default observer(App);
