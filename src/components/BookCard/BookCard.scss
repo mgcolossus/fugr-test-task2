@@ -1,0 +1,70 @@
+.book-card {
+    margin: 20px 0 0px 0;
+    display: flex;
+    justify-content: center;
+
+    flex: 0 0 calc(100%/6);
+
+    @media (max-width:1600px) {
+        flex: 0 0 calc(100%/5);
+    }
+
+    @media (max-width:1400px) {
+        flex: 0 0 calc(100%/4);
+    }
+
+    @media (max-width:1080px) {
+        flex: 0 0 calc(100%/3);
+    }
+
+    @media (max-width:800px) {
+        flex: 0 0 calc(100%/2);
+    }
+
+    @media (max-width:560px) {
+        flex: 0 0 100%;
+    }
+
+
+    &__content {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        background-color: #F3F2F1;
+        padding: 25px 15px 20px 15px;
+    }
+
+    &__thumbnail-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 210px;
+    }
+
+    &__thumbnail {
+        width: 128px;
+        height: 168px;
+        transition: 0.3s all;
+
+        &:hover {
+            box-shadow: 0px 0px 30px 10px rgba(54, 50, 50, 0.4);
+        }
+    }
+
+    &__category {
+        font-weight: 300;
+        text-decoration: underline;
+    }
+
+    &__title {
+        margin: 10px 0px 0px 0px;
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+    }
+
+    &__authors {
+        margin: 3px 0px 0px 0px;
+        font-weight: 300;
+    }
+}
