@@ -1,3 +1,8 @@
+## Задание выполено с использованием React, Typescript и MobX. SCSS для стилей.
+## Деплой: https://fugr-test-task2.netlify.app/
+
+На данный момент не обладаю навыком тестирования с помощью специальных библиотек по типу Jest и т.д. При ручном тестировании старался имитировать различные сценарии: пустой запрос, отдельное открытие ссылки на конкретную книгу, отсутствие некоторых данных в запросе.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
