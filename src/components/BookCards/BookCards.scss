@@ -1,0 +1,19 @@
+.book-cards {
+    padding: 20px 0 40px 0;
+
+    &-total {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    &-items {
+        margin: 15px 0px 0px 0px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__load-more-button-wrapper {
+        text-align: center;
+        margin: 20px 0px 0px 0px;
+    }
+}
